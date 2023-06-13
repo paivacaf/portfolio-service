@@ -1,4 +1,9 @@
 spring:
+  liquibase:
+    change-log: classpath:/db.changelog-master.xml
+    url: jdbc:postgresql://localhost:5432/portfoliodb
+    user: portfolio_user
+    password: portfolio_pass
   datasource:
     hikari:
       connection-timeout: 60000

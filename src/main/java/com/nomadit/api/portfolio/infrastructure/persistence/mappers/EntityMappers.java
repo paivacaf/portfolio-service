@@ -4,6 +4,8 @@ import com.nomadit.api.portfolio.domain.model.Pessoa;
 import com.nomadit.api.portfolio.domain.model.Projeto;
 import com.nomadit.api.portfolio.infrastructure.persistence.entities.PessoaEntity;
 import com.nomadit.api.portfolio.infrastructure.persistence.entities.ProjetoEntity;
+import com.nomadit.api.portfolio.infrastructure.persistence.entities.enums.RiscoEnum;
+import com.nomadit.api.portfolio.infrastructure.persistence.entities.enums.StatusEnum;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
@@ -16,9 +18,9 @@ public class EntityMappers {
                 .id(projetoEntity.getId())
                 .dataFim(Date.from(projetoEntity.getDataFim().atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .nome(projetoEntity.getNome())
-                .risco(projetoEntity.getRisco())
+                .risco(projetoEntity.getRisco().getDescricao())
                 .orcamento(projetoEntity.getOrcamento())
-                .status(projetoEntity.getStatus())
+                .status(projetoEntity.getStatus().getDescricao())
                 .dataInicio(Date.from(projetoEntity.getDataInicio().atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .dataPrevisaoFim(Date.from(projetoEntity.getDataPrevisaoFim().atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .gerente(pessoaEntityToPessoa(projetoEntity.getGerente()))
@@ -30,9 +32,9 @@ public class EntityMappers {
                 .id(projeto.getId())
                 .dataFim(projeto.getDataFim().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())
                 .nome(projeto.getNome())
-                .risco(projeto.getRisco())
+                .risco(RiscoEnum.valueOf(projeto.getRisco()))
                 .orcamento(projeto.getOrcamento())
-                .status(projeto.getStatus())
+                .status(StatusEnum.valueOf(projeto.getStatus()))
                 .dataInicio(projeto.getDataInicio().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())
                 .dataPrevisaoFim(projeto.getDataPrevisaoFim().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())
                 .gerente(pessoaToPessoaEntity(projeto.getGerente()))
