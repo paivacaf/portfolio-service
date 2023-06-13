@@ -1,0 +1,13 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: portfolio_user
+      POSTGRES_PASSWORD: portfolio_pass
+      POSTGRES_DB: portfoliodb
+    volumes:
+      - ./init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
+    ports:
+      - 5432:5432

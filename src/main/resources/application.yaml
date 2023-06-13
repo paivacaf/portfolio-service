@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5
+      max-lifetime: 1800000
+    url: jdbc:postgresql://localhost:5432/portfoliodb
+    username: portfolio_user
+    password: portfolio_pass
+    driver-class-name: org.postgresql.Driver
