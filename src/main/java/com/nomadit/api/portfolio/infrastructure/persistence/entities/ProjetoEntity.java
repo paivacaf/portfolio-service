@@ -1,5 +1,9 @@
 package com.nomadit.api.portfolio.infrastructure.persistence.entities;
 
+import com.nomadit.api.portfolio.infrastructure.persistence.entities.converters.RiscoEnumConverter;
+import com.nomadit.api.portfolio.infrastructure.persistence.entities.converters.StatusEnumConverter;
+import com.nomadit.api.portfolio.infrastructure.persistence.entities.enums.RiscoEnum;
+import com.nomadit.api.portfolio.infrastructure.persistence.entities.enums.StatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,13 +40,15 @@ public class ProjetoEntity {
     private String descricao;
 
     @Column(name = "status", length = 45)
-    private String status;
+    @Convert(converter = StatusEnumConverter.class)
+    private StatusEnum status;
 
     @Column(name = "orcamento")
     private Float orcamento;
 
     @Column(name = "risco", length = 45)
-    private String risco;
+    @Convert(converter = RiscoEnumConverter.class)
+    private RiscoEnum risco;
 
     @ManyToOne
     @JoinColumn(name = "idgerente", referencedColumnName = "id", nullable = false)
