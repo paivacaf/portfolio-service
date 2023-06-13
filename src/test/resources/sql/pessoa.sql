@@ -1,0 +1,1 @@
+insert into pessoa (id, nome, datanascimento, cpf, funcionario) values (1, "Gerente 1", 1979-05-23, "12345678978", false);

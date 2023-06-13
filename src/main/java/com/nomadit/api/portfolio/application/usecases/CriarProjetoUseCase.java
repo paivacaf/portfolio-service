@@ -13,7 +13,7 @@ public class CriarProjetoUseCase {
     private final ProjetoRepository projetoRepository;
 
     public Projeto executar(Projeto projeto) {
-        projetoRepository.salvar(projeto);
+        projetoRepository.criarProjeto(projeto);
         return projeto;
     }
 }

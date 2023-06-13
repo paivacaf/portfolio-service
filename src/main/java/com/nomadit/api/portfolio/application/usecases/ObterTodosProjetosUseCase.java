@@ -15,10 +15,10 @@ public class ObterTodosProjetosUseCase {
     private final ProjetoRepository projetoRepository;
 
     public List<Projeto> executar() {
-        return projetoRepository.obterTodos();
+        return projetoRepository.listarProjetos();
     }
 
     public List<Projeto> executar(Projeto projeto, int page, int size) {
-        return projetoRepository.obterTodos(projeto, page, size);
+        return projetoRepository.pesquisarProjetos(projeto, page, size);
     }
 }

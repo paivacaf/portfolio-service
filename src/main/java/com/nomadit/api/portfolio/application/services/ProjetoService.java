@@ -2,7 +2,6 @@ package com.nomadit.api.portfolio.application.services;
 
 import com.nomadit.api.portfolio.application.usecases.*;
 import com.nomadit.api.portfolio.domain.model.Projeto;
-import com.nomadit.api.portfolio.interfaces.web.dto.ProjetoDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,11 +26,10 @@ public class ProjetoService {
     public Projeto obterProjetoPorId(Long id) {
         return obterProjetoPorIdUseCase.executar(id);
     }
-
-    public List<Projeto> obterTodosProjetos() {
+    public List<Projeto> listarProjetos() {
         return obterTodosProjetosUseCase.executar();
     }
-    public List<Projeto> obterTodosProjetos(Projeto projeto, int page, int size) {
+    public List<Projeto> listarProjetos(Projeto projeto, int page, int size) {
         return obterTodosProjetosUseCase.executar(projeto, page, size);
     }
     public Projeto atualizarProjeto(Long id, Projeto projeto) {

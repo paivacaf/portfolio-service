@@ -16,7 +16,7 @@ public class AtualizarProjetoUseCase {
     public Projeto executar(Long id, Projeto projeto) {
         Optional.of(projetoRepository.obterPorId(id))
                 .orElseThrow();
-        projetoRepository.salvar(projeto);
+        projetoRepository.criarProjeto(projeto);
         return projeto;
     }
 }

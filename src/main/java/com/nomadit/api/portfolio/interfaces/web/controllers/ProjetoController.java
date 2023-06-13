@@ -46,7 +46,7 @@ public class ProjetoController {
 
     @GetMapping
     public ResponseEntity<List<ProjetoDTO>> obterTodosProjetos() {
-        List<ProjetoDTO> projetos = projetoService.obterTodosProjetos()
+        List<ProjetoDTO> projetos = projetoService.listarProjetos()
                 .stream()
                 .map(dataMappers::dtoToProjeto)
                 .collect(Collectors.toList());
@@ -57,7 +57,7 @@ public class ProjetoController {
     public ResponseEntity<List<ProjetoDTO>> obterTodosProjetos(@RequestBody ProjetoDTO projeto,
                                                                @RequestParam(defaultValue = "0") int page,
                                                                @RequestParam(defaultValue = "10") int size) {
-        List<ProjetoDTO> projetos = projetoService.obterTodosProjetos(dataMappers.projetoToDTO(projeto), page, size)
+        List<ProjetoDTO> projetos = projetoService.listarProjetos(dataMappers.projetoToDTO(projeto), page, size)
                 .stream()
                 .map(dataMappers::dtoToProjeto)
                 .collect(Collectors.toList());

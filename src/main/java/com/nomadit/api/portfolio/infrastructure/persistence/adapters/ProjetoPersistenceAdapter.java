@@ -10,10 +10,7 @@ import com.nomadit.api.portfolio.infrastructure.persistence.repositories.Projeto
 import com.nomadit.api.portfolio.infrastructure.persistence.utils.PredicateUtils;
 import com.querydsl.core.types.Predicate;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -30,7 +27,7 @@ public class ProjetoPersistenceAdapter implements ProjetoRepository {
     private final EntityManager entityManager;
 
     @Override
-    public void salvar(Projeto projeto) {
+    public void criarProjeto(Projeto projeto) {
         ProjetoEntity entity = Optional.of(projeto)
                 .map(entityMappers::projectToProjetoEntity)
                 .orElseThrow();
@@ -45,24 +42,19 @@ public class ProjetoPersistenceAdapter implements ProjetoRepository {
     }
 
     @Override
-    public List<Projeto> obterTodos() {
+    public List<Projeto> listarProjetos() {
         return projetoJpaRepository.findAll().stream()
                 .map(entityMappers::projectEntityToProjeto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<Projeto> obterTodos(Projeto projeto, int page, int size) {
+    public List<Projeto> pesquisarProjetos(Projeto projeto, int page, int size) {
         PageRequest pageable = PageRequest.of(page, size);
         Predicate predicate = PredicateUtils.criarPredicate(entityManager, ProjetoEntity.class, entityMappers.projectToProjetoEntity(projeto));
         return projetoJpaRepository.findAll(predicate, pageable).getContent().stream()
                 .map(entityMappers::projectEntityToProjeto)
                 .collect(Collectors.toList());
-    }
-
-    public Page<Projeto> obterTodos(@QuerydslPredicate(root = Projeto.class) Predicate predicate, Pageable pageable) {
-        return projetoJpaRepository.findAll(predicate, pageable)
-                .map(entityMappers::projectEntityToProjeto);
     }
 
     @Override

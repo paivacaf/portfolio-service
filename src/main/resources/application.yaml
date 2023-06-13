@@ -1,6 +1,6 @@
 spring:
   liquibase:
-    change-log: classpath:/db.changelog-master.xml
+    change-log: classpath:/db.changelog/changelogs/db.changelog-master.xml
     url: jdbc:postgresql://localhost:5432/portfoliodb
     user: portfolio_user
     password: portfolio_pass
