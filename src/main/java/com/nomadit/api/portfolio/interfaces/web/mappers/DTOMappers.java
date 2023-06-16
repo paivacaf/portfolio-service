@@ -5,7 +5,7 @@ import com.nomadit.api.portfolio.interfaces.web.dto.ProjetoDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DataMappers {
+public class DTOMappers {
     public Projeto projetoToDTO(ProjetoDTO projeto) {
         return Projeto.builder()
                 .id(projeto.getId())

@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Membro {
-    private Projeto projeto;
-    private Pessoa pessoa;
+
+    private String nome;
+    private String cargo;
+
 }

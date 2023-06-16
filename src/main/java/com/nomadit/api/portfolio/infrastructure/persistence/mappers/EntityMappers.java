@@ -1,7 +1,9 @@
 package com.nomadit.api.portfolio.infrastructure.persistence.mappers;
 
+import com.nomadit.api.portfolio.domain.model.Membro;
 import com.nomadit.api.portfolio.domain.model.Pessoa;
 import com.nomadit.api.portfolio.domain.model.Projeto;
+import com.nomadit.api.portfolio.infrastructure.persistence.entities.MembrosEntity;
 import com.nomadit.api.portfolio.infrastructure.persistence.entities.PessoaEntity;
 import com.nomadit.api.portfolio.infrastructure.persistence.entities.ProjetoEntity;
 import com.nomadit.api.portfolio.infrastructure.persistence.entities.enums.RiscoEnum;
@@ -58,6 +60,20 @@ public class EntityMappers {
                 .nome(pessoa.getNome())
                 .dataNascimento(pessoa.getDataNascimento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())
                 .funcionario(pessoa.isFuncionario())
+                .build();
+    }
+
+    public MembrosEntity membroToMembroEntity(Membro membro) {
+        return MembrosEntity.builder()
+//                .pessoa(pessoaToPessoaEntity(membro.getPessoa()))
+//                .projeto(projectToProjetoEntity(membro.getProjeto()))
+                .build();
+    }
+
+    public Membro membroEntityToMembro(MembrosEntity membro) {
+        return Membro.builder()
+//                .pessoa(pessoaToPessoaEntity(membro.getPessoa()))
+//                .projeto(projectToProjetoEntity(membro.getProjeto()))
                 .build();
     }
 }

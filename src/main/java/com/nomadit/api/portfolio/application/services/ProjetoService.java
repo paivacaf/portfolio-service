@@ -1,6 +1,7 @@
 package com.nomadit.api.portfolio.application.services;
 
 import com.nomadit.api.portfolio.application.usecases.*;
+import com.nomadit.api.portfolio.domain.model.Pessoa;
 import com.nomadit.api.portfolio.domain.model.Projeto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class ProjetoService {
     public List<Projeto> listarProjetos(Projeto projeto, int page, int size) {
         return obterTodosProjetosUseCase.executar(projeto, page, size);
     }
-    public Projeto atualizarProjeto(Long id, Projeto projeto) {
-        return atualizarProjetoUseCase.executar(id, projeto);
+    public Projeto atualizarProjeto(Projeto projeto) {
+        return atualizarProjetoUseCase.executar(projeto);
     }
 }
